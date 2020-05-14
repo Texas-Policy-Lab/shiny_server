@@ -49,7 +49,7 @@ remove_old_fls <- function(shiny_server_pth, url, fls) {
   fls_to_rm <- setdiff(old_fls, fls)
 
   lapply(fls_to_rm, function(fl) {
-    file.remove(fl)
+    file.remove(file.path(shiny_server_pth, url, fl))
   })
 
 }
