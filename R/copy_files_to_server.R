@@ -39,20 +39,42 @@ create_fl_str <- function(shiny_server_pth, url, fls) {
   
 }
 
+#' @title Remove old files
+#' @inheritParams create_fl_str
+#' @export
+remove_old_fls <- function(shiny_server_pth, url, fls) {
+
+  old_fls <- list.files(file.path(shiny_server_pth, url), recursive = TRUE)
+  
+  fls_to_rm <- setdiff(old_fls, fls)
+
+  lapply(fls_to_rm, function(fl) {
+    file.remove(fl)
+  })
+
+}
+
 #' @title Deploy app
 #' @description Copies folder and file structure to the shiny server
 #' @param url string. A string indicating which directory to place the files to.
 #' @param shiny_server_pth string. A string indicating the path to the shiny server.
+#' @export
 deploy_app <- function(url, shiny_server_pth = "/srv/shiny-server") {
-  
+
   create_dir_str(shiny_server_pth = shiny_server_pth,
                  url = url,
                  dirs = list.dirs(".", recursive = TRUE, full.names = F)[-1])
-  
+
+  fls <- list.files(".", recursive = TRUE)
+
+  remove_old_fls(shiny_server_pth = shiny_server_pth,
+                 url = url,
+                 fls = fls)
+
   create_fl_str(shiny_server_pth = shiny_server_pth,
                 url = url,
-                fls = list.files(".", recursive = TRUE))
-  
+                fls = fls)
+
 }
 
 #' @title Test config
