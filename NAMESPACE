@@ -2,7 +2,9 @@
 
 export(create_dir_str)
 export(create_fl_str)
+export(deploy_app)
 export(deploy_main)
 export(prompt_prod_q)
+export(remove_old_fls)
 export(test_config)
 importFrom(magrittr,"%>%")
