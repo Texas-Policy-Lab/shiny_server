@@ -4,10 +4,11 @@
 \alias{remove_old_fls}
 \title{Remove old files}
 \usage{
-remove_old_fls(shiny_server_pth, url, fls)
+remove_old_fls(shiny_server_pth, url, fls, ignore_fl_server)
 }
 \arguments{
-\item{shiny_server_pth}{string. A string indicating the path to the shiny server.}
+\item{shiny_server_pth}{string. A string indicating the path to the shiny 
+server.}
 
 \item{url}{string. A string indicating which directory to place the files to.}
 

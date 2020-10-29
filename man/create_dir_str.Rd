@@ -7,7 +7,8 @@
 create_dir_str(shiny_server_pth, url, dirs)
 }
 \arguments{
-\item{shiny_server_pth}{string. A string indicating the path to the shiny server.}
+\item{shiny_server_pth}{string. A string indicating the path to the shiny 
+server.}
 
 \item{url}{string. A string indicating which directory to place the files to.}
 

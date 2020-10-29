@@ -4,14 +4,19 @@
 \alias{create_fl_str}
 \title{Create fl structure on the shiny server}
 \usage{
-create_fl_str(shiny_server_pth, url, fls)
+create_fl_str(shiny_server_pth, url, fls, ignore_fl_repo)
 }
 \arguments{
-\item{shiny_server_pth}{string. A string indicating the path to the shiny server.}
+\item{shiny_server_pth}{string. A string indicating the path to the shiny 
+server.}
 
 \item{url}{string. A string indicating which directory to place the files to.}
 
 \item{fls}{vector. A list of files to copy to the shiny server.}
+
+\item{ignore_fl_repo}{vector. A vector of file paths to ignore in the 
+repository that will be copied to the server. Default is NULL. Can be a list 
+of individual files names to ignore or a folder to ignore.}
 }
 \description{
 Create fl structure on the shiny server
