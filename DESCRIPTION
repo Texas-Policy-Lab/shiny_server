@@ -1,6 +1,6 @@
 Package: tplshinyserver
 Title: TPL Shiny Server
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: person("Joli", "Holmes", email = "jh111@rice.edu",
                   role = c("aut", "cre"))
 Description: Functions to utilize on tpl's shiny server. tplapps.rice.edu/shiny
