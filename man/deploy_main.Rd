@@ -4,10 +4,18 @@
 \alias{deploy_main}
 \title{Copy files}
 \usage{
-deploy_main(deploy)
+deploy_main(deploy, ignore_fl_server = NULL, ignore_fl_repo = NULL)
 }
 \arguments{
 \item{deploy}{list. A list containing the urls and run values for development and production.}
+
+\item{ignore_fl_server}{vector. A vector of file paths to ignore on the
+ server, these files will not be replaced. Default is NULL. Can be a list 
+of individual files names to ignore or a folder to ignore.}
+
+\item{ignore_fl_repo}{vector. A vector of file paths to ignore in the 
+repository that will be copied to the server. Default is NULL. Can be a list 
+of individual files names to ignore or a folder to ignore.}
 }
 \description{
 Copy files

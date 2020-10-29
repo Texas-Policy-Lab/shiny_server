@@ -7,8 +7,8 @@
 deploy_app(
   url,
   shiny_server_pth = "/srv/shiny-server",
-  ignore_fl_server = NULL,
-  ignore_fl_repo = NULL
+  ignore_fl_server,
+  ignore_fl_repo
 )
 }
 \arguments{
@@ -16,14 +16,6 @@ deploy_app(
 
 \item{shiny_server_pth}{string. A string indicating the path to the shiny 
 server.}
-
-\item{ignore_fl_server}{vector. A vector of file paths to ignore on the
- server, these files will not be replaced. Default is NULL. Can be a list 
-of individual files names to ignore or a folder to ignore.}
-
-\item{ignore_fl_repo}{vector. A vector of file paths to ignore in the 
-repository that will be copied to the server. Default is NULL. Can be a list 
-of individual files names to ignore or a folder to ignore.}
 }
 \description{
 Copies folder and file structure to the shiny server

@@ -69,17 +69,11 @@ remove_old_fls <- function(shiny_server_pth, url, fls, ignore_fl_server) {
 #' @param url string. A string indicating which directory to place the files to.
 #' @param shiny_server_pth string. A string indicating the path to the shiny 
 #' server.
-#' @param ignore_fl_server vector. A vector of file paths to ignore on the
-#'  server, these files will not be replaced. Default is NULL. Can be a list 
-#' of individual files names to ignore or a folder to ignore.
-#' @param ignore_fl_repo vector. A vector of file paths to ignore in the 
-#' repository that will be copied to the server. Default is NULL. Can be a list 
-#' of individual files names to ignore or a folder to ignore.
 #' @export
 deploy_app <- function(url,
                        shiny_server_pth = "/srv/shiny-server",
-                       ignore_fl_server = NULL,
-                       ignore_fl_repo = NULL) {
+                       ignore_fl_server,
+                       ignore_fl_repo) {
 
   create_dir_str(shiny_server_pth = shiny_server_pth,
                  url = url,
@@ -126,9 +120,17 @@ prompt_prod_q <- function() {
 
 #' @title Copy files
 #' @param deploy list. A list containing the urls and run values for development and production.
+##' @param ignore_fl_server vector. A vector of file paths to ignore on the
+#'  server, these files will not be replaced. Default is NULL. Can be a list 
+#' of individual files names to ignore or a folder to ignore.
+#' @param ignore_fl_repo vector. A vector of file paths to ignore in the 
+#' repository that will be copied to the server. Default is NULL. Can be a list 
+#' of individual files names to ignore or a folder to ignore.
 #' @importFrom magrittr "%>%"
 #' @export
-deploy_main <- function(deploy) {
+deploy_main <- function(deploy,
+                        ignore_fl_server = NULL,
+                        ignore_fl_repo = NULL) {
 
   test_config(deploy)
 
@@ -149,12 +151,16 @@ deploy_main <- function(deploy) {
     }
 
     if (x == "y") {
-      deploy_app(url = url)
+      deploy_app(url = url, 
+                 ignore_fl_server = ignore_fl_server,
+                 ignore_fl_repo = ignore_fl_repo)
     }
 
   } else {
 
-    deploy_app(url = url)
+    deploy_app(url = url,
+               ignore_fl_server = ignore_fl_server,
+               ignore_fl_repo = ignore_fl_repo)
 
   }
 }
