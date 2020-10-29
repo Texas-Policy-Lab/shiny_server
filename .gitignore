@@ -2,3 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
+
+renv/library
+renv/settings.dcf
+renv/.gitignore
