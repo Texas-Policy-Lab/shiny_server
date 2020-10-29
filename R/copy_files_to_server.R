@@ -54,6 +54,12 @@ remove_old_fls <- function(shiny_server_pth, url, fls, ignore_fl_server) {
   old_fls <- list.files(file.path(shiny_server_pth, url), recursive = TRUE)
 
   if(!is.null(ignore_fl_server)) {
+    
+    ignore <- c(ignore_fl_repo, list.files(ignore_fl_server,
+                                           recursive = TRUE,
+                                           include.dirs = TRUE,
+                                           full.names = TRUE))
+    
     fls <- fls[fls %in% ignore == FALSE]
   }
 
